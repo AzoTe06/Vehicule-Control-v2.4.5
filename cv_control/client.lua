@@ -31,7 +31,7 @@ function PersonnalMenu()
     options.menu_subtitle = "CATEGORIES"  
     ClearMenu()
     Menu.addButton("Moteur", "moteur", nil)
-    Menu.addButton("Limiteur", "speedo", nil)
+    Menu.addButton("Limiteur de vitesse", "speedo", nil)
     Menu.addButton("Test", "maxspeed", nil)    
     Menu.addButton("Portieres", "portieres", nil)
 	  Menu.addButton("Fermer le menu", "CloseMenu", nil)
@@ -56,24 +56,6 @@ function speedo()
     Menu.addButton("110 ~g~Km/h", "vitesse", "110.0")
     Menu.addButton("130 ~g~Km/h", "vitesse", "130.0")
     Menu.addButton("Retour", "PersonnalMenu", nil)
-end
-
-function vitesse(vit)
-    speed = vit/3.6
-    local ped = GetPlayerPed(-1)
-    local vehicle = GetVehiclePedIsIn(ped, false)
-   
-    local vehicleModel = GetEntityModel(vehicle)
-    local float Max = GetVehicleMaxSpeed(vehicleModel)
-   
-    if (vit == 0) then
-    SetEntityMaxSpeed(vehicle, Max)
-    exports.pNotify:SendNotification({text = "Limiteur désactivé", type = "error", layout = "bottomRight", timeout = math.random(4000, 8000)})
-    else
-    SetEntityMaxSpeed(vehicle, speed)
-    exports.pNotify:SendNotification({text = "Limiteur activé", type = "success", layout = "bottomRight", timeout = math.random(4000, 8000)})
-    PersonnalMenu()
-    end
 end
 
 function portieres()
@@ -134,6 +116,25 @@ end
 
 --------------------------------------------------- NUI CALLBACKS ------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------
+
+function vitesse(vit)
+    speed = vit/3.6
+    local ped = GetPlayerPed(-1)
+    local vehicle = GetVehiclePedIsIn(ped, false)
+   
+    local vehicleModel = GetEntityModel(vehicle)
+    local float Max = GetVehicleMaxSpeed(vehicleModel)
+   
+    if (vit == 0) then
+    SetEntityMaxSpeed(vehicle, Max)
+    exports.pNotify:SendNotification({text = "Limiteur désactivé", type = "error", layout = "bottomRight", timeout = math.random(4000, 8000)})
+    else
+    SetEntityMaxSpeed(vehicle, speed)
+    exports.pNotify:SendNotification({text = "Limiteur activé", type = "success", layout = "bottomRight", timeout = math.random(4000, 8000)})
+    PersonnalMenu()
+    end
+end
+
 
 function capot()
    local playerPed = GetPlayerPed(-1)
