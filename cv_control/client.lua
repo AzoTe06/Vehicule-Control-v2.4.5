@@ -31,8 +31,7 @@ function PersonnalMenu()
     options.menu_subtitle = "CATEGORIES"  
     ClearMenu()
     Menu.addButton("Moteur", "moteur", nil)
-    Menu.addButton("Limiteur de vitesse", "speedo", nil)
-    Menu.addButton("Test", "maxspeed", nil)    
+    Menu.addButton("Limiteur de vitesse", "speedo", nil)  
     Menu.addButton("Portieres", "portieres", nil)
 	  Menu.addButton("Fermer le menu", "CloseMenu", nil)
 end
